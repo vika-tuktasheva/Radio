@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 //выставление значения радиостанции
 
-//проверка значения в диапазоне
+    //проверка значения в диапазоне
     @Test
     void setCurrentStationInTheRange() {
         Radio radio = new Radio();
@@ -20,8 +20,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//проверка граничных значений > max
-@Test
+    //проверка граничных значений > max
+    @Test
     void setCurrentStationOverMax() {
         Radio radio = new Radio();
         radio.currentStation = 5;
@@ -33,8 +33,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//проверка граничных значений < min
-@Test
+    //проверка граничных значений < min
+    @Test
     void setCurrentStationLowMin() {
         Radio radio = new Radio();
         radio.currentStation = 5;
@@ -47,8 +47,8 @@ class RadioTest {
     }
 
 
-//следующая станция, значение в диапазоне
-@Test
+    //следующая станция, значение в диапазоне
+    @Test
     void increaseStationInTheRange() {
         Radio radio = new Radio();
         radio.increaseStation(5);
@@ -59,8 +59,8 @@ class RadioTest {
     }
 
 
-//следующая станция, значение > max
-@Test
+    //следующая станция, значение > max
+    @Test
     void increaseStationOverMax() {
         Radio radio = new Radio();
         radio.increaseStation(9);
@@ -70,8 +70,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//предыдущая станция, значение в диапазоне
-@Test
+    //предыдущая станция, значение в диапазоне
+    @Test
     void decreaseStationInTheRange() {
         Radio radio = new Radio();
         radio.decreaseStation(5);
@@ -81,8 +81,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//предыдущая станция, значение < min
-@Test
+    //предыдущая станция, значение < min
+    @Test
     void decreaseStationLowMin() {
         Radio radio = new Radio();
         radio.decreaseStation(0);
@@ -92,9 +92,9 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//выставление уровня громкости
+    //выставление уровня громкости
 //проверка значения в диапазоне
-@Test
+    @Test
     void setCurrentVolumeInTheRange() {
         Radio radio = new Radio();
         radio.currentVolume = 2;
@@ -106,8 +106,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//проверка граничных значений > max
-@Test
+    //проверка граничных значений > max
+    @Test
     void setCurrentVolumeOverMax() {
         Radio radio = new Radio();
         radio.currentVolume = 5;
@@ -119,8 +119,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//проверка граничных значений < min
-@Test
+    //проверка граничных значений < min
+    @Test
     void setCurrentVolumeLowMin() {
         Radio radio = new Radio();
         radio.currentVolume = 5;
@@ -132,8 +132,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//увеличение громкости, значение в диапазоне
-@Test
+    //увеличение громкости, значение в диапазоне
+    @Test
     void increaseVolumeInTheRange() {
         Radio radio = new Radio();
         radio.increaseVolume(5);
@@ -144,8 +144,8 @@ class RadioTest {
     }
 
 
-//увеличение громкости, значение > max
-@Test
+    //увеличение громкости, значение > max
+    @Test
     void increaseVolumeOverMax() {
         Radio radio = new Radio();
         radio.increaseVolume(10);
@@ -155,8 +155,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//уменьшение громкости, значение в диапазоне
-@Test
+    //уменьшение громкости, значение в диапазоне
+    @Test
     void decreaseVolumeInTheRange() {
         Radio radio = new Radio();
         radio.decreaseVolume(5);
@@ -166,8 +166,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//уменьшение громкости, значение < min
-@Test
+    //уменьшение громкости, значение < min
+    @Test
     void decreaseVolumeLowMin() {
         Radio radio = new Radio();
         radio.decreaseVolume(0);
