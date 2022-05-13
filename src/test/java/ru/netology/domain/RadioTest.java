@@ -1,4 +1,4 @@
-package ru.netology.radio;
+package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,10 +11,9 @@ class RadioTest {
     @Test
     void setCurrentStationInTheRange() {
         Radio radio = new Radio();
-        radio.currentStation = 2;
-        radio.setCurrentStation(7);
+        radio.setCurrentStation(5);
 
-        int expected = 7;
+        int expected = 5;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
@@ -24,10 +23,9 @@ class RadioTest {
     @Test
     void setCurrentStationOverMax() {
         Radio radio = new Radio();
-        radio.currentStation = 5;
         radio.setCurrentStation(10);
 
-        int expected = 5;
+        int expected = 0;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
@@ -37,33 +35,32 @@ class RadioTest {
     @Test
     void setCurrentStationLowMin() {
         Radio radio = new Radio();
-        radio.currentStation = 5;
         radio.setCurrentStation(-1);
 
-        int expected = 5;
+        int expected = 0;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
     }
 
-
     //следующая станция, значение в диапазоне
     @Test
     void increaseStationInTheRange() {
         Radio radio = new Radio();
-        radio.increaseStation(5);
+        radio.setCurrentStation(5);
+        radio.increaseStation();
 
         int expected = 6;
         int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
 
-
     //следующая станция, значение > max
     @Test
     void increaseStationOverMax() {
         Radio radio = new Radio();
-        radio.increaseStation(9);
+        radio.setCurrentStation(9);
+        radio.increaseStation();
 
         int expected = 0;
         int actual = radio.getCurrentStation();
@@ -74,7 +71,8 @@ class RadioTest {
     @Test
     void decreaseStationInTheRange() {
         Radio radio = new Radio();
-        radio.decreaseStation(5);
+        radio.setCurrentStation(5);
+        radio.decreaseStation();
 
         int expected = 4;
         int actual = radio.getCurrentStation();
@@ -85,7 +83,8 @@ class RadioTest {
     @Test
     void decreaseStationLowMin() {
         Radio radio = new Radio();
-        radio.decreaseStation(0);
+        radio.setCurrentStation(0);
+        radio.decreaseStation();
 
         int expected = 9;
         int actual = radio.getCurrentStation();
@@ -97,7 +96,6 @@ class RadioTest {
     @Test
     void setCurrentVolumeInTheRange() {
         Radio radio = new Radio();
-        radio.currentVolume = 2;
         radio.setCurrentVolume(7);
 
         int expected = 7;
@@ -110,10 +108,9 @@ class RadioTest {
     @Test
     void setCurrentVolumeOverMax() {
         Radio radio = new Radio();
-        radio.currentVolume = 5;
         radio.setCurrentVolume(12);
 
-        int expected = 5;
+        int expected = 0;
         int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -123,10 +120,9 @@ class RadioTest {
     @Test
     void setCurrentVolumeLowMin() {
         Radio radio = new Radio();
-        radio.currentVolume = 5;
         radio.setCurrentVolume(-1);
 
-        int expected = 5;
+        int expected = 0;
         int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -136,19 +132,20 @@ class RadioTest {
     @Test
     void increaseVolumeInTheRange() {
         Radio radio = new Radio();
-        radio.increaseVolume(5);
+        radio.setCurrentVolume(5);
+        radio.increaseVolume();
 
         int expected = 6;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
-
     //увеличение громкости, значение > max
     @Test
     void increaseVolumeOverMax() {
         Radio radio = new Radio();
-        radio.increaseVolume(10);
+        radio.setCurrentVolume(10);
+        radio.increaseVolume();
 
         int expected = 10;
         int actual = radio.getCurrentVolume();
@@ -159,7 +156,8 @@ class RadioTest {
     @Test
     void decreaseVolumeInTheRange() {
         Radio radio = new Radio();
-        radio.decreaseVolume(5);
+        radio.setCurrentVolume(5);
+        radio.decreaseVolume();
 
         int expected = 4;
         int actual = radio.getCurrentVolume();
@@ -170,7 +168,8 @@ class RadioTest {
     @Test
     void decreaseVolumeLowMin() {
         Radio radio = new Radio();
-        radio.decreaseVolume(0);
+        radio.setCurrentVolume(0);
+        radio.decreaseVolume();
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
