@@ -3,19 +3,33 @@ package ru.netology.domain;
 public class Radio {
 
     private int currentStation;
+    private int minStation = 0;
+    private int maxStation = 9;
+
     private int currentVolume;
+    private int minVolume = 0;
+    private int maxVolume = 100;
+
+    public Radio() {//радио по умолчанию со станциями от 0 до 9
+
+    }
+
+    public Radio(int stationCounts) {//радио с количеством станций stationCounts
+        maxStation = stationCounts - 1;
+    }
 
     // значение текущей радиостанции
     public int getCurrentStation() {
+
         return currentStation;
     }
 
     // выставление номера радиостанции с проверкой допустимости
     public void setCurrentStation(int currentStation) {
-        if (currentStation > 9) {
+        if (currentStation > maxStation) {
             return;
         }
-        if (currentStation < 0) {
+        if (currentStation < minStation) {
             return;
         }
         this.currentStation = currentStation;
@@ -23,21 +37,19 @@ public class Radio {
 
     //переключение на следующую радиостанцию
     public void increaseStation() {
-        if (currentStation < 9) {
-            this.currentStation = currentStation + 1;
-        }
-        if (currentStation >= 9) {
-            this.currentStation = 0;
+        if (currentStation < maxStation) {
+            currentStation++;
+        } else {
+            currentStation = minStation;
         }
     }
 
     //переключение на предыдущую радиостанцию
     public void decreaseStation() {
-        if (currentStation > 0) {
-            this.currentStation = currentStation - 1;
-        }
-        if (currentStation <= 0) {
-            this.currentStation = 9;
+        if (currentStation > minStation) {
+            currentStation--;
+        } else {
+            currentStation = maxStation;
         }
     }
 
@@ -48,32 +60,24 @@ public class Radio {
 
     // выставление громкости с проверкой допустимости
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume > 10) {
-            return;
-        }
-        if (currentVolume < 0) {
-            return;
-        }
         this.currentVolume = currentVolume;
     }
 
     //увеличение громкости
     public void increaseVolume() {
-        if (currentVolume < 10) {
-            this.currentVolume = currentVolume + 1;
-        }
-        if (currentVolume >= 10) {
-            this.currentVolume = currentVolume;
+        if (currentVolume < maxVolume) {
+            currentVolume++;
+        } else {
+            return;
         }
     }
 
     //уменьшение громкости
     public void decreaseVolume() {
-        if (currentVolume > 0) {
-            this.currentVolume = currentVolume - 1;
-        }
-        if (currentVolume <= 0) {
-            this.currentVolume = 0;
+        if (currentVolume > minVolume) {
+            currentVolume--;
+        } else {
+            return;
         }
     }
 }
